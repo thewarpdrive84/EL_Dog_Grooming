@@ -11,7 +11,9 @@ namespace DogGrooming.Models
         [Key]
         public int Code { get; set; }
         public String Description { get; set; }
+
         [Display(Name = "Price (€)")]
+        [DataType(DataType.Currency)]
         public double Price { get; set; }
 
         public Service(int _code, String _description, double _price)

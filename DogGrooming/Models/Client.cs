@@ -21,6 +21,9 @@ namespace DogGrooming.Models
         public string DogName { get; set; }
 
         [Required]
+        [Display(Name = "Phone")]
+        public int Phone { get; set; }
+        [Required]
         [Display(Name = "Email")]
         [EmailAddress]
         public string Email { get; set; }
