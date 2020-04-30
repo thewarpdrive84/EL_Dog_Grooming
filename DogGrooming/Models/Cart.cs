@@ -8,10 +8,10 @@ namespace DogGrooming.Models
 {
         public class Cart
     {
-        //[Key]
-        //public int CartId { get; set; }
+        [Key]
+        public int CartId { get; set; }
 
-        private List<CartService> services;
+        public List<CartService> services;
 
         public Cart()
         {

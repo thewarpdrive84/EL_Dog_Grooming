@@ -24,6 +24,8 @@ namespace DogGrooming.Models
 
         public System.Data.Entity.DbSet<DogGrooming.Models.CartService> CartServices { get; set; }
 
+        public System.Data.Entity.DbSet<DogGrooming.Models.Cart> Carts { get; set; }
+
         //public System.Data.Entity.DbSet<DogGrooming.Models.Cart> Carts { get; set; }
     }
 }

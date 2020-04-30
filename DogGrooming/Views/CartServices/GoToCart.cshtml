@@ -1,0 +1,40 @@
+﻿@model IEnumerable<DogGrooming.Models.Service>
+
+@{
+    ViewBag.Title = "GoToCart";
+}
+
+<h2>GoToCart</h2>
+<h2>Dog Name: @ViewBag.DogName</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.ActionLink("Delete", "Delete", new { id=item.Code })
+        </td>
+    </tr>
+}
+
+</table>
+
+<h2>Total: @ViewBag.Total</h2>

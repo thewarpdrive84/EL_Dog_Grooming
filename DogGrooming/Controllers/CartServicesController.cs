@@ -17,8 +17,20 @@ namespace DogGrooming.Controllers
         private static Cart myCart = new Cart();
 
         // GET: Cart
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
+            ViewBag.ClientId = id;
+
+
+            double cartTotal = myCart.GetTotalCartPrice();
+            ViewBag.CartTotal = cartTotal;
+            //return View(products);
+            return View(db.Services.ToList());
+        }
+
+        public ActionResult SelectServices(int id)
+        {
+
             double cartTotal = myCart.GetTotalCartPrice();
             ViewBag.CartTotal = cartTotal;
             //return View(products);
@@ -26,14 +38,28 @@ namespace DogGrooming.Controllers
         }
 
         // GET: Cart/Details/5
-        public ActionResult Add(int code)
+        public ActionResult Add(int code, int id)
         {
+          
             Service serviceToAdd = db.Services.FirstOrDefault(p => p.Code.Equals(code));
             if (serviceToAdd != null)
             {
                 myCart.AddService(serviceToAdd);
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new { id = id });
+        }
+
+        public ActionResult GoToCart(int id)
+        {
+            Client client = db.Clients.Find(id);
+            if (client != null)
+            {
+                ViewBag.DogName = client.DogName;
+                ViewBag.Total = myCart.GetTotalCartPrice();
+            }
+                
+            
+            return View(myCart.services);
         }
     }
 }

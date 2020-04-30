@@ -126,10 +126,9 @@ namespace DogGrooming.Controllers
             base.Dispose(disposing);
         }
 
-        [HttpPost]
-        public ActionResult AddCart()
+        public ActionResult SelectServices(int id)
         {
-            return RedirectToAction("Index", "Services");
+            return RedirectToAction("Index", "CartServices", new { id=id});
         }
     }
 }

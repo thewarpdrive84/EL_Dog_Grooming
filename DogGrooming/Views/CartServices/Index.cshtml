@@ -2,9 +2,11 @@
 
 @{
     ViewBag.Title = "Index";
+
 }
 
 <h2>Index</h2>
+<h2>ClientId : @ViewBag.ClientId</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -36,10 +38,12 @@
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
-                @Html.ActionLink("Add To Cart", "Add", new { code = item.Code })
+                @Html.ActionLink("Add To Cart", "Add", new { code = item.Code, id = @ViewBag.ClientId })
             </td>
         </tr>
     }
 </table>
 
 <h3>Total cost: €@ViewBag.CartTotal</h3>
+
+@Html.ActionLink("Go To Cart", "GoToCart", new { id = @ViewBag.ClientId })
