@@ -18,15 +18,6 @@ namespace DogGrooming.Models
             services = new List<CartService>();
         }
 
-        //public Cart(int cartId)
-        //{
-        //    CartId = cartId;
-        //}
-
-        //public void Add(Cart cart)
-        //{
-        //}
-
         public void AddService(Service serviceToAdd)
         {
             var match = services.FirstOrDefault(p => p.Code.Equals(serviceToAdd.Code));
@@ -44,26 +35,5 @@ namespace DogGrooming.Models
         {
             return services.Sum(itm => itm.Price * itm.Quantity);
         }
-
-        //public List<Cart> GetCartServices()
-        //{
-        //    return db.Carts.Where(cart => cart.CartId == db.Carts).ToList();
-        //}
-        //public int CreateCart(Cart cart)
-        //{
-        //    var cartServices = GetCartServices();
-
-        //    // Iterate over the items in the cart
-        //    foreach (var item in cartServices)
-        //    {
-        //        var cartDetail = new CartDetail
-        //        {
-        //            ClientId = item.ClientId,
-        //            CartId = cart.CartId,
-        //        };
-                
-        //        db.CartServices.Add(cartServices);
-
-        //    }
     }
 }

@@ -20,9 +20,10 @@ namespace DogGrooming.Models
         [Display(Name = "Dog Name")]
         public string DogName { get; set; }
 
-        [Required]
         [Display(Name = "Phone")]
-        public int Phone { get; set; }
+        [Phone]
+        public string Phone { get; set; }
+
         [Required]
         [Display(Name = "Email")]
         [EmailAddress]
@@ -42,14 +43,6 @@ namespace DogGrooming.Models
         // empty constructor
         public Client()
         { }
-
-
-        //public class ClientCart : Cart
-        //{
-        //    public ClientCart()
-        //    { }
-
-
         
     }
 }

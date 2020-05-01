@@ -14,8 +14,6 @@ namespace DogGrooming.Controllers
     {
         private DogGroomingContext db = new DogGroomingContext();
 
-        //private static Cart myCart = new Cart();
-
         // GET: Clients
         public ActionResult Index()
         {
@@ -44,11 +42,9 @@ namespace DogGrooming.Controllers
         }
 
         // POST: Clients/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,DogName,Email,Date,Time")] Client client)
+        public ActionResult Create([Bind(Include = "Id,Name,DogName,Phone,Email,Date,Time")] Client client)
         {
             if (ModelState.IsValid)
             {
@@ -76,11 +72,9 @@ namespace DogGrooming.Controllers
         }
 
         // POST: Clients/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,DogName,Email,Date,Time")] Client client)
+        public ActionResult Edit([Bind(Include = "Id,Name,DogName,Phone,Email,Date,Time")] Client client)
         {
             if (ModelState.IsValid)
             {

@@ -4,12 +4,10 @@
     ViewBag.Title = "GoToCart";
 }
 
-<h2>GoToCart</h2>
-<h2>Dog Name: @ViewBag.DogName</h2>
+<h2>Your Cart</h2>
+<h3>Dog Name: @ViewBag.DogName</h3>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <table class="table">
     <tr>
         <th>
@@ -37,4 +35,4 @@
 
 </table>
 
-<h2>Total: @ViewBag.Total</h2>
+<h2>Total: €@ViewBag.Total</h2>
