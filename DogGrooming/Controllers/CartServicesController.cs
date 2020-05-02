@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using DogGrooming.Models;
@@ -51,8 +53,29 @@ namespace DogGrooming.Controllers
             {
                 ViewBag.DogName = client.DogName;
                 ViewBag.Total = myCart.GetTotalCartPrice();
-            }            
+            }
             return View(myCart.services);
         }
+
+        public FileStreamResult Invoice()
+        {
+            StringBuilder sb = new StringBuilder("Your Invoice");
+
+            sb.AppendLine(" ");
+            sb.AppendLine("Id:"+ @ViewBag.ClientId);
+            sb.AppendLine("Name:" + @ViewBag.Name);
+            sb.AppendLine("Total:" + @ViewBag.Total);
+
+            var invoiceDetails = sb.ToString();
+
+            var byteArray = Encoding.ASCII.GetBytes(invoiceDetails);
+            var stream = new MemoryStream(byteArray);
+
+
+            return File(stream, "text/plain", "Invoice.txt");
+
+        }
+
+
     }
 }

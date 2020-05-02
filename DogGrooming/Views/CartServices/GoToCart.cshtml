@@ -19,20 +19,24 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.ActionLink("Delete", "Delete", new { id=item.Code })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "Delete", new { id = item.Code })
+            </td>
+        </tr>
+    }
 
 </table>
 
 <h2>Total: €@ViewBag.Total</h2>
+
+@Html.ActionLink("Save to File", "Invoice", "CartServices", new { @class = "btn btn-default" })
+

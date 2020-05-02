@@ -6,7 +6,7 @@
 }
 
 <h2>Index</h2>
-<h2>ClientId : @ViewBag.ClientId</h2>
+<h3>ClientId : @ViewBag.ClientId</h3>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -46,4 +46,4 @@
 
 <h3>Total cost: €@ViewBag.CartTotal</h3>
 
-@Html.ActionLink("Go To Cart", "GoToCart", new { id = @ViewBag.ClientId })
+@Html.ActionLink("Go To Cart", "GoToCart", new { id = @ViewBag.ClientId }, new { @class = "btn btn-default"})
