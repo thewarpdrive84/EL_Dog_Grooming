@@ -21,18 +21,18 @@ namespace DogGrooming.Controllers
         // GET: Cart
         public ActionResult Index(int id)
         {
-            ViewBag.ClientId = id;
+            try
+            {
+                ViewBag.ClientId = id;
 
-            double cartTotal = myCart.GetTotalCartPrice();
-            ViewBag.CartTotal = cartTotal;
-            return View(db.Services.ToList());
-        }
-
-        public ActionResult SelectServices(int id)
-        {
-            double cartTotal = myCart.GetTotalCartPrice();
-            ViewBag.CartTotal = cartTotal;
-            return View(db.Services.ToList());
+                double cartTotal = myCart.GetTotalCartPrice();
+                ViewBag.CartTotal = cartTotal;
+                return View(db.Services.ToList());
+            }
+            catch
+            {
+                return View();
+            }
         }
 
         // Add service(s) to cart
@@ -78,21 +78,17 @@ namespace DogGrooming.Controllers
         {
             StringBuilder sb = new StringBuilder("Your Invoice");
 
-            sb.AppendLine(" ");
-            sb.AppendLine("Id:"+ @ViewBag.ClientId);
-            sb.AppendLine("Name:" + (string)(Session[@ViewBag.name]));
-            sb.AppendLine("Total:" + @ViewBag.Total);
+                sb.AppendLine(" ");
+                sb.AppendLine("Id:" + @ViewBag.ClientId);
+                sb.AppendLine("Name:" + (string)(Session[@ViewBag.name]));
+                sb.AppendLine("Total:" + @ViewBag.Total);
 
-            var invoiceDetails = sb.ToString();
+                var invoiceDetails = sb.ToString();
 
-            var byteArray = Encoding.ASCII.GetBytes(invoiceDetails);
-            var stream = new MemoryStream(byteArray);
+                var byteArray = Encoding.ASCII.GetBytes(invoiceDetails);
+                var stream = new MemoryStream(byteArray);
 
-
-            return File(stream, "text/plain", "Invoice.txt");
-
+                return File(stream, "text/plain", "Invoice.txt");
         }
-
-
     }
 }
