@@ -16,6 +16,7 @@ namespace DogGrooming.Models
         [DataType(DataType.Currency)]
         public double Price { get; set; }
 
+        //service constructor
         public Service(int _code, String _description, double _price)
         {
             Code = _code;
@@ -23,22 +24,25 @@ namespace DogGrooming.Models
             Price = _price;
         }
 
+        //empty service constructor
         public Service()
         {
 
         }
     }
 
+    //inherited class from service
     public class CartService : Service
     {
-       
         public int Quantity { get; set; }
 
+        // cartservice constuctor for quantity
         public CartService(Service srv) : base(srv.Code, srv.Description, srv.Price)
         {
             Quantity = 1;
         }
 
+        //empty cartservice constructor
         public CartService()
         {
         }

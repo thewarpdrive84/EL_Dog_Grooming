@@ -35,35 +35,52 @@ namespace DogGrooming.Controllers
             return View(db.Services.ToList());
         }
 
-        // GET: Cart/Details/5
+        // Add service(s) to cart
         public ActionResult Add(int code, int id)
         {
-            Service serviceToAdd = db.Services.FirstOrDefault(p => p.Code.Equals(code));
-            if (serviceToAdd != null)
+            try
             {
-                myCart.AddService(serviceToAdd);
+                Service serviceToAdd = db.Services.FirstOrDefault(p => p.Code.Equals(code));
+                if (serviceToAdd != null)
+                {
+                    myCart.AddService(serviceToAdd);
+                }
+                return RedirectToAction("Index", new { id = id });
             }
-            return RedirectToAction("Index", new { id = id });
+            catch
+            {
+                return View();
+            }
         }
 
+            // Go to client's cart
         public ActionResult GoToCart(int id)
         {
-            Client client = db.Clients.Find(id);
-            if (client != null)
+            try
             {
-                ViewBag.DogName = client.DogName;
-                ViewBag.Total = myCart.GetTotalCartPrice();
+                Client client = db.Clients.Find(id);
+                if (client != null)
+                {
+                    ViewBag.DogName = client.DogName;
+                    ViewBag.Total = myCart.GetTotalCartPrice();
+                }
+                return View(myCart.services);
             }
-            return View(myCart.services);
+            catch
+            {
+                return View();
+            }
         }
 
+
+        // Download invoice to txt file
         public FileStreamResult Invoice()
         {
             StringBuilder sb = new StringBuilder("Your Invoice");
 
             sb.AppendLine(" ");
             sb.AppendLine("Id:"+ @ViewBag.ClientId);
-            sb.AppendLine("Name:" + @ViewBag.Name);
+            sb.AppendLine("Name:" + (string)(Session[@ViewBag.name]));
             sb.AppendLine("Total:" + @ViewBag.Total);
 
             var invoiceDetails = sb.ToString();

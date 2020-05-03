@@ -111,6 +111,7 @@ namespace DogGrooming.Controllers
             return RedirectToAction("Index");
         }
 
+        //Dispose
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -120,6 +121,7 @@ namespace DogGrooming.Controllers
             base.Dispose(disposing);
         }
 
+        //GET: Select services for cart
         public ActionResult SelectServices(int id)
         {
             return RedirectToAction("Index", "CartServices", new { id=id});

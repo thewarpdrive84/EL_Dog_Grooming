@@ -40,7 +40,7 @@ namespace DogGrooming.Models
         public DateTime Time { get; set; }
 
 
-        // empty constructor
+        // empty client constructor
         public Client()
         { }
         

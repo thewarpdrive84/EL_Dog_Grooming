@@ -13,11 +13,13 @@ namespace DogGrooming.Models
 
         public List<CartService> services;
 
+        //cart constructor
         public Cart()
         {
             services = new List<CartService>();
         }
 
+        //add service to cart and increase quantity
         public void AddService(Service serviceToAdd)
         {
             var match = services.FirstOrDefault(p => p.Code.Equals(serviceToAdd.Code));
@@ -31,6 +33,7 @@ namespace DogGrooming.Models
             }
         }
 
+        //calculate the total price of services in cart
         public double GetTotalCartPrice()
         {
             return services.Sum(itm => itm.Price * itm.Quantity);
