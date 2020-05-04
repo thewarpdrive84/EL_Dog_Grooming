@@ -39,6 +39,18 @@ namespace DogGrooming.Models
         [DataType(DataType.Time)]
         public DateTime Time { get; set; }
 
+        // constructor
+        public Client(int _id, string _name, string _dogname, string _phone, string _email, DateTime _date, DateTime _time)
+        {
+            Id = _id;
+            Name = _name;
+            DogName = _dogname;
+            Phone = _phone;
+            Email = _email;
+            Date = _date;
+            Time = _time;
+        }
+
 
         // empty client constructor
         public Client()
