@@ -46,11 +46,18 @@ namespace DogGrooming.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Description,Price")] Service service)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Services.Add(service);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                    if (ModelState.IsValid)
+                {
+                    db.Services.Add(service);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+            catch (DataException /* dex */)
+            {
+                ModelState.AddModelError("", "Unable to save changes. Please try again.");
             }
 
             return View(service);

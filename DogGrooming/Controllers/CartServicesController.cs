@@ -73,15 +73,15 @@ namespace DogGrooming.Controllers
         }
 
 
-        // Download invoice to txt file
+        // Download invoice to txt file  *hardcoded client details as viewbag will not allow input to file*
         public FileStreamResult Invoice()
         {
             StringBuilder sb = new StringBuilder("Your Invoice");
 
                 sb.AppendLine(" ");
-                sb.AppendLine("Id:" + @ViewBag.ClientId);
-                sb.AppendLine("Name:" + (string)(Session[@ViewBag.name]));
-                sb.AppendLine("Total:" + @ViewBag.Total);
+                sb.AppendLine("Id: " + " 1" /*@ViewBag.ClientId*/ );
+                sb.AppendLine("Name: " + " Jimmy"  /*(Session[@ViewBag.name])*/);
+                sb.AppendLine("Total: " + " €25" /*@ViewBag.Total*/);
 
                 var invoiceDetails = sb.ToString();
 

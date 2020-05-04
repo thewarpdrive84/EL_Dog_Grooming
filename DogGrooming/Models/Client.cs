@@ -13,7 +13,7 @@ namespace DogGrooming.Models
         [Display(Name = "Client Id")]
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "The Name field is required")]
         [Display(Name = "Human Name")]
         public string Name { get; set; }
 
@@ -24,17 +24,17 @@ namespace DogGrooming.Models
         [Phone]
         public string Phone { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "The Email field is required")]
         [Display(Name = "Email")]
         [EmailAddress]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "The Date field is required")]
         [Display(Name = "Appointment Date")]
         [DataType(DataType.Date)]
         public DateTime Date { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "The Time field is required")]
         [Display(Name = "Appointment Time")]
         [DataType(DataType.Time)]
         public DateTime Time { get; set; }

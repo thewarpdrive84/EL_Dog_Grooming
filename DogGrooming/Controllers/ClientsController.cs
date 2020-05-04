@@ -46,13 +46,19 @@ namespace DogGrooming.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name,DogName,Phone,Email,Date,Time")] Client client)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Clients.Add(client);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                    if (ModelState.IsValid)
+                {
+                    db.Clients.Add(client);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
-
+            catch (DataException /* dex */)
+            {
+                ModelState.AddModelError("", "Unable to save changes. Please try again."); 
+            }
             return View(client);
         }
 
