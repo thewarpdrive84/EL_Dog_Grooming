@@ -81,7 +81,8 @@ namespace DogGrooming.Controllers
                 sb.AppendLine(" ");
                 sb.AppendLine("Id: " + " 1" /*@ViewBag.ClientId*/ );
                 sb.AppendLine("Name: " + " Jimmy"  /*(Session[@ViewBag.name])*/);
-                sb.AppendLine("Total: " + " €25" /*@ViewBag.Total*/);
+                sb.AppendLine("Dog Name: " + " Murphy" /*@ViewBag.Total*/);
+                sb.AppendLine("Total: " + " E25" /*@ViewBag.Total*/);
 
                 var invoiceDetails = sb.ToString();
 

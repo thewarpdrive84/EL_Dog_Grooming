@@ -31,7 +31,7 @@ namespace DogGrooming.Test
         }
 
         [TestMethod()]
-        public void EditClientTestView()
+        public void EditClientTestView()    /*not passing due to connection string error*/
         {
             var controller = new ClientsController();
             var result = controller.Edit(4) as ViewResult;
@@ -40,7 +40,7 @@ namespace DogGrooming.Test
         }
 
         [TestMethod()]
-        public void DeleteClientTestView()
+        public void DeleteClientTestView()   /*not passing due to connection string error*/
         {
             var controller = new ClientsController();
             var result = controller.Delete(5) as ViewResult;
@@ -69,7 +69,7 @@ namespace DogGrooming.Test
 
 
         [TestMethod()]
-        public void EditServiceTestView()
+        public void EditServiceTestView()    /*not passing due to connection string error*/
         {
             var controller = new ServicesController();
             var result = controller.Edit(3) as ViewResult;
@@ -78,7 +78,7 @@ namespace DogGrooming.Test
         }
 
         [TestMethod()]
-        public void DeleteServiceTestView()
+        public void DeleteServiceTestView()    /*not passing due to connection string error*/
         {
             var controller = new ServicesController();
             var result = controller.Delete(6) as ViewResult;
@@ -86,5 +86,19 @@ namespace DogGrooming.Test
             Assert.AreEqual("", result.ViewName);
         }
 
+
+        //*not working*
+        //[TestMethod]
+        //public void GetTotalCartPrice_Test()
+        //{
+        //    Cart cart = new Cart();
+        //    int Price = 20;
+        //    int Quantity = 2;
+        //    int expected = 40;
+
+        //    int actual = Cart.GetTotalCartPrice();
+
+        //    Assert.AreEqual(expected, actual);
+        //}
     }
 }
