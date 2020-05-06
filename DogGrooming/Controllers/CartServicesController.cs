@@ -53,7 +53,27 @@ namespace DogGrooming.Controllers
             }
         }
 
-            // Go to client's cart
+        // Remove service(s) from cart
+        //*not working properly, removes everything from the cart*
+        public ActionResult Remove(int? code, int id)
+        {
+            try
+            {
+                Service serviceToRemove = db.Services.FirstOrDefault(p => p.Code.Equals(code));
+                if (serviceToRemove != null)
+                {
+                    myCart.RemoveService(serviceToRemove);
+                }
+                return RedirectToAction("GoToCart", new { id = id });
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+
+        // Go to client's cart
         public ActionResult GoToCart(int id)
         {
             try

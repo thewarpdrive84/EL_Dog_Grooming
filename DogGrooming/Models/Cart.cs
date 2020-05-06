@@ -33,6 +33,20 @@ namespace DogGrooming.Models
             }
         }
 
+        //remove service to cart and decrease quantity
+        public void RemoveService(Service serviceToRemove)
+        {
+            var match = services.FirstOrDefault(p => p.Code.Equals(serviceToRemove.Code));
+            if (match == null)
+            {
+                services.Remove(new CartService(serviceToRemove));
+            }
+            else
+            {
+                match.Quantity--;
+            }
+        }
+
         //calculate the total price of services in cart
         public double GetTotalCartPrice()
         {
