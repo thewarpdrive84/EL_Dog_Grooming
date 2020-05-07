@@ -37,13 +37,20 @@ namespace DogGrooming.Models
         public void RemoveService(Service serviceToRemove)
         {
             var match = services.FirstOrDefault(p => p.Code.Equals(serviceToRemove.Code));
-            if (match == null)
+            if (match != null)
             {
-                services.Remove(new CartService(serviceToRemove));
+                if (match.Quantity == 1)
+                {
+                    services.Remove(match);
+                }
+                else
+                {
+                    match.Quantity--;
+                }
             }
             else
             {
-                match.Quantity--;
+                throw new ArgumentException("Service not in cart");
             }
         }
 
